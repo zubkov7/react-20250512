@@ -8,3 +8,5 @@ const reactRoot = createRoot(root);
 const TITLE = "headphones app";
 
 reactRoot.render(<App title={TITLE} isVisible />);
+
+console.log(reactRoot);

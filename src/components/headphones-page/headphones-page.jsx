@@ -34,6 +34,7 @@ export const HeadphonesPage = ({ title }) => {
         brand={activeHeadphone.brand}
         reviews={activeHeadphone.reviews}
         codecs={activeHeadphone.codecs}
+        key={activeHeadphoneId}
       />
     </div>
   );
