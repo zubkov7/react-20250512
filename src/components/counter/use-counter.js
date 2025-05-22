@@ -1,14 +1,14 @@
 import { useState } from "react";
 
-export const useCount = () => {
-  const [count, setCount] = useState(0);
+export const useCount = ({ min = 0, max = 5 } = {}) => {
+  const [value, setValue] = useState(min);
 
-  const onIncrement = () => setCount(count + 1);
-  const onDecrement = () => setCount(count - 1);
+  const increment = () => setValue(Math.min(value + 1, max));
+  const decrement = () => setValue(Math.max(value - 1, min));
 
   return {
-    count,
-    onIncrement,
-    onDecrement,
+    value,
+    increment,
+    decrement,
   };
 };

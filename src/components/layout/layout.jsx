@@ -1,10 +1,12 @@
-export const Layout = ({ children, sidebar }) => {
+import { Footer } from "../footer/footer";
+import { Header } from "../header/header";
+
+export const Layout = ({ children }) => {
   return (
     <div>
-      {sidebar}
-      <header>header</header>
+      <Header />
       {children}
-      <footer>foouter</footer>
+      <Footer />
     </div>
   );
 };
