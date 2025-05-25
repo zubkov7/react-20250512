@@ -29,13 +29,15 @@ export const HeadphonesPage = ({ title }) => {
         />
       ))}
 
-      <Headphone
-        name={activeHeadphone.name}
-        brand={activeHeadphone.brand}
-        reviews={activeHeadphone.reviews}
-        codecs={activeHeadphone.codecs}
-        key={activeHeadphoneId}
-      />
+      {activeHeadphone && (
+        <Headphone
+          name={activeHeadphone.name}
+          brand={activeHeadphone.brand}
+          reviews={activeHeadphone.reviews}
+          codecs={activeHeadphone.codecs}
+          key={activeHeadphone.id}
+        />
+      )}
     </div>
   );
 };
