@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { headphones } from "../../constants/mock";
 import { Headphone } from "../headphone/headphone";
 import { Tab } from "../tab/tab";
@@ -6,7 +6,9 @@ import { Tab } from "../tab/tab";
 export const HeadphonesPage = ({ title }) => {
   const [activeHeadphoneId, setActiveHeadphoneId] = useState(headphones[0].id);
 
-  const activeHeadphone = headphones.find(({ id }) => id === activeHeadphoneId);
+  const activeHeadphone = useMemo(() => {
+    return headphones.find(({ id }) => id === activeHeadphoneId);
+  }, [activeHeadphoneId]);
 
   const handleSetActiveHeadphoneId = (id) => {
     if (activeHeadphoneId === id) {
@@ -15,6 +17,13 @@ export const HeadphonesPage = ({ title }) => {
 
     setActiveHeadphoneId(id);
   };
+
+  const isApple = useMemo(
+    () => activeHeadphone.brand === "Apple",
+    [activeHeadphone.brand]
+  );
+
+  const isApplee = activeHeadphone.brand === "Apple";
 
   return (
     <div>
@@ -29,6 +38,15 @@ export const HeadphonesPage = ({ title }) => {
         />
       ))}
 
+      {activeHeadphone && (
+        <Headphone
+          name={activeHeadphone.name}
+          brand={activeHeadphone.brand}
+          reviews={activeHeadphone.reviews}
+          codecs={activeHeadphone.codecs}
+          key={activeHeadphone.id}
+        />
+      )}
       {activeHeadphone && (
         <Headphone
           name={activeHeadphone.name}

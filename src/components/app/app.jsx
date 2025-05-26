@@ -1,6 +1,8 @@
 import { HeadphonesPage } from "../headphones-page/headphones-page";
 import { Layout } from "../layout/layout";
 
+import "./global.css";
+
 export const App = () => {
   return (
     <Layout>
