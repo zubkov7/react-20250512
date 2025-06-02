@@ -4,10 +4,9 @@ import { ProgressBar } from "../progress-bar/progress-bar";
 
 import styles from "./layout.module.css";
 
-export const Layout = ({ children, sidebar }) => {
+export const Layout = ({ children }) => {
   return (
     <div className={styles.root}>
-      {sidebar}
       <ProgressBar />
       <Header />
       <main className={styles.main}>{children}</main>

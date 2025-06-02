@@ -3,14 +3,17 @@ import { Layout } from "../layout/layout";
 
 import "./reset.css";
 import "./app.css";
-import { ThemeContextProvider } from "../theme-context/theme-context-provider";
+import { ThemeContextProvider } from "../theme-context/theme-context";
+import { AuthContextProvider } from "../auth-context/auth-context";
 
 export const App = () => {
   return (
-    <ThemeContextProvider>
-      <Layout sidebar={<div>sidebar</div>}>
-        <HeadphonesPage />
-      </Layout>
-    </ThemeContextProvider>
+    <AuthContextProvider>
+      <ThemeContextProvider>
+        <Layout>
+          <HeadphonesPage />
+        </Layout>
+      </ThemeContextProvider>
+    </AuthContextProvider>
   );
 };
