@@ -125,11 +125,7 @@ export const normalizedHeadphones = [
       "as31dqwdqwd21asdad43e3r2re12e",
       "aad31214sd2fr2rwede3rqwdqwd2re12e",
     ],
-    codecs: [
-      "asdad312143e3r2re12e",
-      "as3121asdad43e3r2re12e",
-      "aad31214sd2fr2rwede3r2re12e",
-    ],
+    codecs: ["ngu45hg8374hg3g8", "djuh34782g6g7"],
   },
   {
     name: "Beats Studio 3",
