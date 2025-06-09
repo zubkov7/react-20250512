@@ -8,6 +8,7 @@ const initialState = {
 
     return acc;
   }, {}),
+  // example: new Map(),
 };
 
 export const codecsSlice = createSlice({
