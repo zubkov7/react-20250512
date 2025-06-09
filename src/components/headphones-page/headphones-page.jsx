@@ -1,7 +1,6 @@
 import { Tabs } from "../tabs/tabs";
 import { useSelector } from "react-redux";
 import { selectHeadphonesIds } from "../../redux/entities/headphones/slice";
-import { HeadphoneContainer } from "../headphone/headphone-container";
 import { HeadphoneTabContainer } from "../headphone-tab/headphone-tab-container";
 import { Outlet } from "react-router";
 

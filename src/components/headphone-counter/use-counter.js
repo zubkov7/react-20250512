@@ -3,27 +3,27 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
   removeFromCart,
-  selectItemAmountById,
+  selectAmountByItemId,
 } from "../../redux/entities/cart/slice";
 
 export const useCount = (headphoneId) => {
   const dispatch = useDispatch();
 
-  const amount = useSelector((state) =>
-    selectItemAmountById(state, headphoneId)
-  );
+  const amount =
+    useSelector((state) => selectAmountByItemId(state, headphoneId)) || 0;
+
   const increment = useCallback(
     () => dispatch(addToCart(headphoneId)),
-    [dispatch, headphoneId]
+    [headphoneId, dispatch]
   );
 
   const decrement = useCallback(
     () => dispatch(removeFromCart(headphoneId)),
-    [dispatch, headphoneId]
+    [headphoneId, dispatch]
   );
 
   return {
-    value: amount,
+    amount,
     increment,
     decrement,
   };

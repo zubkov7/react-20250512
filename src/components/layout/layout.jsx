@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import { Cart } from "../cart/cart";
+import { CartContainer } from "../cart/cart-container";
 import { Footer } from "../footer/footer";
 import { Header } from "../header/header";
 import { ProgressBar } from "../progress-bar/progress-bar";
@@ -14,7 +14,7 @@ export const Layout = () => {
       <main className={styles.main}>
         <Outlet />
       </main>
-      <Cart />
+      <CartContainer />
       <Footer />
     </div>
   );
