@@ -1,34 +1,21 @@
-import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
 import { getHeadphones } from "./get-headphones";
 
 const entityAdapter = createEntityAdapter();
 
 export const headphonesSlice = createSlice({
   name: "headphones",
-  initialState: entityAdapter.getInitialState({ requestStatus: "idle" }),
-  selectors: {
-    selectRequestStatus: (state) => state.requestStatus,
-  },
+  initialState: entityAdapter.getInitialState(),
   extraReducers: (builder) =>
-    builder
-      .addCase(getHeadphones.pending, (state) => {
-        state.requestStatus = "pending";
-      })
-      .addCase(getHeadphones.fulfilled, (state, { payload }) => {
-        // state.requestStatus = "fulfilled";
-
-        entityAdapter.setAll(state, payload);
-      })
-      .addCase(getHeadphones.rejected, (state) => {
-        state.requestStatus = "rejected";
-      }),
+    builder.addCase(getHeadphones.fulfilled, (state, { payload }) => {
+      entityAdapter.setAll(state, payload);
+    }),
 });
 
-const selectHeadphonesSlice = (state) => state[headphonesSlice.name];
+const selectHeadphonesSlice = (state) => state.headphones;
 
 export const {
-  selectIds: selectHeadphonesIds,
   selectById: selectHeadphoneById,
+  selectIds: selectHeadphonesIds,
+  selectTotal: selectHeadphonesTotal,
 } = entityAdapter.getSelectors(selectHeadphonesSlice);
-
-export const { selectRequestStatus } = headphonesSlice.selectors;

@@ -1,8 +1,7 @@
-import { HeadphonesPage } from "../headphones-page/headphones-page";
-import { Layout } from "../layout/layout";
-
 import "./reset.css";
 import "./app.css";
+
+import { Layout } from "../layout/layout";
 import { ThemeContextProvider } from "../theme-context/theme-context";
 import { AuthContextProvider } from "../auth-context/auth-context";
 import { Provider } from "react-redux";
@@ -12,6 +11,7 @@ import { HomePage } from "../../pages/home-page";
 import { HeadphonePage } from "../../pages/headphone-page";
 import { HeadphoneReviewsPage } from "../../pages/headphone-reviews-page";
 import { HeadphoneCodecsPage } from "../../pages/headphone-codecs-page";
+import { HeadphonesPage } from "../../pages/headphones-page";
 
 export const App = () => {
   return (
@@ -25,11 +25,14 @@ export const App = () => {
                 <Route path='/headphones' element={<HeadphonesPage />}>
                   <Route index element={<div>Choose headphone</div>} />
                   <Route path=':headphoneId' element={<HeadphonePage />}>
-                    <Route index element={<Navigate to='reviews' />} />
+                    <Route index element={<Navigate to='reviews' replace />} />
                     <Route path='reviews' element={<HeadphoneReviewsPage />} />
                     <Route path='codecs' element={<HeadphoneCodecsPage />} />
                   </Route>
                 </Route>
+                <Route path='/about' element={<div>about page</div>} />
+                <Route path='/blocked' element={<Navigate to='/' />} />
+                <Route path='/*' element={<div>pages</div>} />
               </Route>
             </Routes>
           </ThemeContextProvider>
