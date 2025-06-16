@@ -8,7 +8,7 @@ import {
   REQUEST_STATUS_REJECTED,
 } from "../../redux/constants";
 
-export const Reviews = ({ reviewsIds }) => {
+export const Reviews = ({ reviews }) => {
   const users = useSelector(selectTotalUsers);
   const requestStatus = useRequest(getUsers);
 
@@ -23,9 +23,9 @@ export const Reviews = ({ reviewsIds }) => {
   return (
     <div>
       <h3>Reviews</h3>
-      {reviewsIds?.map((reviewId) => (
-        <li key={reviewId}>
-          <ReviewContainer id={reviewId} />
+      {reviews?.map((review) => (
+        <li key={review.id}>
+          <ReviewContainer review={review} />
         </li>
       ))}
     </div>

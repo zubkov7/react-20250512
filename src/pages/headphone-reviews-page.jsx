@@ -9,26 +9,26 @@ import {
   REQUEST_STATUS_PENDING,
   REQUEST_STATUS_REJECTED,
 } from "../redux/constants";
+import {
+  useAddReviewMutation,
+  useGetReviewsByHeadphoneIdQuery,
+} from "../redux/api";
 
 export const HeadphoneReviewsPage = () => {
   const { headphoneId } = useParams();
 
   const usersRequestStatus = useRequest(getUsers);
-  const reviewsRequestStatus = useRequest(getReviewsByHeadphoneId, headphoneId);
+  const {
+    data: reviews,
+    isFetching: isReviewsLoading,
+    isError: isReviewsError,
+  } = useGetReviewsByHeadphoneIdQuery(headphoneId);
 
   const isLoading =
-    usersRequestStatus === REQUEST_STATUS_PENDING ||
-    reviewsRequestStatus === REQUEST_STATUS_PENDING;
+    usersRequestStatus === REQUEST_STATUS_PENDING || isReviewsLoading;
 
   const isError =
-    usersRequestStatus === REQUEST_STATUS_REJECTED ||
-    reviewsRequestStatus === REQUEST_STATUS_REJECTED;
-
-  const headphone = useSelector((state) =>
-    selectHeadphoneById(state, headphoneId)
-  );
-
-  const { reviews } = headphone || {};
+    usersRequestStatus === REQUEST_STATUS_REJECTED || isReviewsError;
 
   if (isLoading) {
     return "loading...";
@@ -38,8 +38,8 @@ export const HeadphoneReviewsPage = () => {
     return "ERROR";
   }
 
-  return reviews.length ? (
-    <Reviews reviewsIds={reviews} />
+  return reviews?.length ? (
+    <Reviews reviews={reviews} />
   ) : (
     <div>empty review</div>
   );
