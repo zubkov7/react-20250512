@@ -25,7 +25,7 @@ export const App = () => {
                 <Route path='/headphones' element={<HeadphonesPage />}>
                   <Route index element={<div>Choose headphone</div>} />
                   <Route path=':headphoneId' element={<HeadphonePage />}>
-                  <Route index element={<Navigate to='reviews' replace />} />
+                    <Route index element={<Navigate to='reviews' replace />} />
                     <Route path='reviews' element={<HeadphoneReviewsPage />} />
                     <Route path='codecs' element={<HeadphoneCodecsPage />} />
                   </Route>
@@ -41,3 +41,5 @@ export const App = () => {
     </BrowserRouter>
   );
 };
+
+export default App;
