@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3001/api" }),
-  tagTypes: ["Reviews"],
+  tagTypes: ["reviews"],
   endpoints: (builder) => ({
     getHeadphones: builder.query({
       query: () => "/products",
@@ -12,24 +12,31 @@ export const api = createApi({
       query: (headphoneId) => `/product/${headphoneId}`,
     }),
     getReviewsByHeadphoneId: builder.query({
-      query: (headphoneId) => `/reviews?productId=${headphoneId}`,
-      providesTags: [{ type: "Reviews", id: "all" }],
+      query: (headphoneId) => `reviews?productId=${headphoneId}`,
+      providesTags: [{ type: "reviews", id: "ALL" }],
     }),
     addReview: builder.mutation({
       query: ({ headphoneId, review }) => ({
         url: `/review/${headphoneId}`,
-        method: "POST",
         body: review,
+        method: "POST",
       }),
-      invalidatesTags: [{ type: "Reviews", id: "all" }],
+      invalidatesTags: [{ type: "reviews", id: "ALL" }],
+    }),
+    getUsers: builder.query({
+      query: () => "/users",
+    }),
+    getCodecsByHeadphoneId: builder.query({
+      query: (headphoneId) => `/codecs?productId=${headphoneId}`,
     }),
   }),
 });
 
 export const {
   useGetHeadphonesQuery,
-  useLazyGetHeadphonesQuery,
   useGetHeadphoneByIdQuery,
   useGetReviewsByHeadphoneIdQuery,
   useAddReviewMutation,
+  useGetUsersQuery,
+  useGetCodecsByHeadphoneIdQuery,
 } = api;
