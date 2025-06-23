@@ -1,42 +1,17 @@
 "use client";
 
-import {
-  useAddReviewMutation,
-  useGetReviewsByHeadphoneIdQuery,
-  useGetUsersQuery,
-} from "../../redux/services/api/api";
 import { Reviews } from "./reviews";
-import { useCallback } from "react";
 
-export const ReviewsContainer = ({ headphoneId }) => {
-  const { data, isFetching: isGetReviewsFetching } =
-    useGetReviewsByHeadphoneIdQuery(headphoneId);
-
-  useGetUsersQuery();
-
-  const [addReview, { isLoading: isAddReviewFetching }] =
-    useAddReviewMutation();
-
-  const handleAddReview = useCallback(
-    (review) => {
-      addReview({ headphoneId, review });
-    },
-    [addReview, headphoneId]
-  );
-
-  if (isGetReviewsFetching || isAddReviewFetching) {
-    return "...loading";
-  }
-
-  if (!data.length) {
+export const ReviewsContainer = ({ reviews }) => {
+  if (!reviews.length) {
     return null;
   }
 
   return (
     <Reviews
-      reviews={data}
-      onAddReview={handleAddReview}
-      isSubmitButtonDisabled={isAddReviewFetching}
+      reviews={reviews}
+      onAddReview={() => {}}
+      isSubmitButtonDisabled={false}
     />
   );
 };

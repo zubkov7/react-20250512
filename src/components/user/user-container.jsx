@@ -1,15 +1,9 @@
 "use client";
 
 import { User } from "./user";
-import { useGetUsersQuery } from "../../redux/services/api/api";
 
-export const UserContainer = ({ id }) => {
-  const { data } = useGetUsersQuery(undefined, {
-    selectFromResult: (result) => ({
-      ...result,
-      data: result.data?.find(({ id: userId }) => userId === id),
-    }),
-  });
+export const UserContainer = () => {
+  const data = null;
 
   if (!data?.name) {
     return null;

@@ -1,18 +1,8 @@
-"use client";
-
-import { useGetHeadphonesQuery } from "../../redux/services/api/api";
+import { getHeadphones } from "@/services/get-headphones";
 import { HeadphonesTabs } from "./headphones-tabs";
 
-export const HeadphonesTabsContainer = () => {
-  const { data, isLoading, isError } = useGetHeadphonesQuery();
-
-  if (isLoading) {
-    return "loading ...";
-  }
-
-  if (isError) {
-    return "error";
-  }
+export const HeadphonesTabsContainer = async () => {
+  const data = await getHeadphones();
 
   if (!data.length) {
     return null;

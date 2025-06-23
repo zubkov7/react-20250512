@@ -1,9 +1,3 @@
-import { ReviewsContainer } from "@/components/reviews/reviews-container";
-
-const HeadphoneReviewsPage = async ({ params }) => {
-  const { headphoneId } = await params;
-
-  return <ReviewsContainer headphoneId={headphoneId} />;
-};
+import { HeadphoneReviewsPage } from "@/components/pages/headphone-reviews-page";
 
 export default HeadphoneReviewsPage;

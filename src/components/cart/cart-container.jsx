@@ -1,15 +1,8 @@
-"use client";
-
-import { useSelector } from "react-redux";
-import { selectCartItemsIds } from "../../redux/entities/cart/slice";
+import { getHeadphones } from "@/services/get-headphones";
 import { Cart } from "./cart";
 
-export const CartContainer = () => {
-  const itemsIds = useSelector(selectCartItemsIds);
+export const CartContainer = async () => {
+  const headphones = await getHeadphones();
 
-  if (!itemsIds.length) {
-    return null;
-  }
-
-  return <Cart itemsIds={itemsIds} />;
+  return <Cart headphones={headphones} />;
 };
