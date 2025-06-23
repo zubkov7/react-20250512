@@ -5,7 +5,7 @@ export const HeadphonesTabs = ({ headphones }) => {
   return (
     <Tabs>
       {headphones.map(({ name, id }) => (
-        <TabLink to={id} key={id}>
+        <TabLink href={`/headphones/${id}`} key={id}>
           {name}
         </TabLink>
       ))}

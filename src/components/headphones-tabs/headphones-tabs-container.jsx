@@ -1,3 +1,5 @@
+"use client";
+
 import { useGetHeadphonesQuery } from "../../redux/services/api/api";
 import { HeadphonesTabs } from "./headphones-tabs";
 

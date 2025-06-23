@@ -1,3 +1,5 @@
+import { App } from "@/components/app/app";
+
 export const metadata = {
   title: "Next js app",
   description: "headphones app",
@@ -20,8 +22,7 @@ const RootLayout = ({ children }) => {
         />
       </head>
       <body>
-        <div>root layout</div>
-        {children}
+        <App>{children}</App>
       </body>
     </html>
   );

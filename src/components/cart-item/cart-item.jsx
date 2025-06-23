@@ -1,3 +1,5 @@
+"use client";
+
 import { useGetHeadphonesQuery } from "../../redux/services/api/api";
 import { HeadphoneCounter } from "../headphone-counter/headphone-counter";
 
@@ -9,7 +11,7 @@ export const CartItem = ({ id }) => {
     }),
   });
 
-  if (!headphone.name) {
+  if (!headphone?.name) {
     return null;
   }
 

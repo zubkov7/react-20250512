@@ -1,3 +1,5 @@
+"use client";
+
 import { HeadphoneCounter } from "../headphone-counter/headphone-counter";
 import { use } from "react";
 import { AuthContext } from "../auth-context";
@@ -18,8 +20,8 @@ export const Headphone = ({ name, brand, id }) => {
       <div>{brand}</div>
       {auth.isAuthorized && <HeadphoneCounter id={id} />}
       <Tabs>
-        <TabLink to='reviews'>Reviews</TabLink>
-        <TabLink to='codecs'>Codecs</TabLink>
+        <TabLink href={`/headphones/${id}/reviews`}>Reviews</TabLink>
+        <TabLink href={`/headphones/${id}/codecs`}>Codecs</TabLink>
       </Tabs>
     </section>
   );

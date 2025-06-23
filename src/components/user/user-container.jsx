@@ -1,3 +1,5 @@
+"use client";
+
 import { User } from "./user";
 import { useGetUsersQuery } from "../../redux/services/api/api";
 

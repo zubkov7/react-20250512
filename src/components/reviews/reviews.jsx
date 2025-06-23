@@ -1,3 +1,5 @@
+"use client";
+
 import { use } from "react";
 import { ReviewForm } from "../review-form/review-form";
 import { Review } from "../review/review";
