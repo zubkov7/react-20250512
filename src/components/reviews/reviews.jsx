@@ -5,7 +5,7 @@ import { ReviewForm } from "../review-form/review-form";
 import { Review } from "../review/review";
 import { AuthContext } from "../auth-context";
 
-export const Reviews = ({ reviews, onAddReview, isSubmitButtonDisabled }) => {
+export const Reviews = ({ reviews, submitFormAction }) => {
   const { auth } = use(AuthContext);
 
   return (
@@ -18,12 +18,7 @@ export const Reviews = ({ reviews, onAddReview, isSubmitButtonDisabled }) => {
           </li>
         ))}
       </ul>
-      {auth.isAuthorized && (
-        <ReviewForm
-          onSubmit={onAddReview}
-          isSubmitButtonDisabled={isSubmitButtonDisabled}
-        />
-      )}
+      {auth.isAuthorized && <ReviewForm submitFormAction={submitFormAction} />}
     </div>
   );
 };

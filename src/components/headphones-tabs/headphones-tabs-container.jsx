@@ -1,11 +1,16 @@
 import { getHeadphones } from "@/services/get-headphones";
 import { HeadphonesTabs } from "./headphones-tabs";
+import { notFound } from "next/navigation";
 
 export const HeadphonesTabsContainer = async () => {
-  const data = await getHeadphones();
+  const { error, data } = await getHeadphones();
 
-  if (!data.length) {
-    return null;
+  if (error) {
+    throw new Error();
+  }
+
+  if (!data) {
+    return notFound();
   }
 
   return <HeadphonesTabs headphones={data} />;

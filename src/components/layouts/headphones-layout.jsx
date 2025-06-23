@@ -1,9 +1,12 @@
 import { HeadphonesTabsContainer } from "../headphones-tabs/headphones-tabs-container";
+import { Suspense } from "react";
 
-export const HeadphonesLayout = ({ children }) => {
+export const HeadphonesLayout = async ({ children }) => {
   return (
     <div>
-      <HeadphonesTabsContainer />
+      <Suspense fallback={<div>loading..</div>}>
+        <HeadphonesTabsContainer />
+      </Suspense>
       {children}
     </div>
   );

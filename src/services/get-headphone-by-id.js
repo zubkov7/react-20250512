@@ -1,11 +1,5 @@
-export const getHeadphones = async () => {
-  const response = await fetch("http://localhost:3001/api/products", {
-    cache: "no-store",
-    next: {
-      // revalidate: 10,
-      // tags: ["getHeadphones"],
-    },
-  });
+export const getHeadphoneById = async (id) => {
+  const response = await fetch(`http://localhost:3001/api/product/${id}`);
 
   if (!response.ok) {
     return { error: response.status, data: null };
